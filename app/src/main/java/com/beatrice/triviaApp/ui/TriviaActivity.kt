@@ -1,4 +1,4 @@
-package com.beatrice.trivial_app.ui
+package com.beatrice.triviaApp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
-import com.beatrice.architectureComponets.R
-import com.beatrice.trivial_app.data.TriviaModel
+import com.beatrice.triviaApp.R
+import com.beatrice.triviaApp.data.TriviaModel
 
 class TriviaActivity : AppCompatActivity() {
     private val triviaViewModel: TriviaViewModel by viewModels()
@@ -37,7 +37,7 @@ class TriviaActivity : AppCompatActivity() {
                 triviaId += 1
             }else{
                 triviaId = 0
-                triviaTextView.text = "Hello World"
+                triviaTextView.text = "Hello World!"
             }
             Log.d("TRIVIAID", "is $triviaId ")
             triviaViewModel.triviaId = triviaId

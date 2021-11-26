@@ -1,4 +1,4 @@
-package com.beatrice.trivial_app.data
+package com.beatrice.triviaApp.data
 
 import android.content.Context
 import android.util.Log

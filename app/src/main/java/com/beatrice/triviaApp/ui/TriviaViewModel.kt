@@ -1,9 +1,9 @@
-package com.beatrice.trivial_app.ui
+package com.beatrice.triviaApp.ui
 
 import android.content.Context
 import androidx.lifecycle.*
-import com.beatrice.trivial_app.data.TriviaModel
-import com.beatrice.trivial_app.repository.TriviaRepository
+import com.beatrice.triviaApp.data.TriviaModel
+import com.beatrice.triviaApp.repository.TriviaRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

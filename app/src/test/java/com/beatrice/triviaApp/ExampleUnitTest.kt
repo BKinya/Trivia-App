@@ -1,4 +1,4 @@
-package com.beatrice.architectureComponets
+package com.beatrice.triviaApp
 
 import org.junit.Test
 

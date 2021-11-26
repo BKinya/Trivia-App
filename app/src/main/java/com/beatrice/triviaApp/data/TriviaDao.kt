@@ -1,4 +1,4 @@
-package com.beatrice.trivial_app.data
+package com.beatrice.triviaApp.data
 
 import androidx.room.Dao
 import androidx.room.Insert

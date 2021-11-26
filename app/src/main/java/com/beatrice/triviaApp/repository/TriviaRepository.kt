@@ -1,8 +1,8 @@
-package com.beatrice.trivial_app.repository
+package com.beatrice.triviaApp.repository
 
 import android.content.Context
-import com.beatrice.trivial_app.data.TriviaDatabase
-import com.beatrice.trivial_app.data.TriviaModel
+import com.beatrice.triviaApp.data.TriviaDatabase
+import com.beatrice.triviaApp.data.TriviaModel
 
 class TriviaRepository(
 ) {
