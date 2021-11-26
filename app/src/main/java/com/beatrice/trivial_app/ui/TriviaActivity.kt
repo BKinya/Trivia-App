@@ -2,23 +2,56 @@ package com.beatrice.trivial_app.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.viewModels
 import com.beatrice.architectureComponets.R
 import com.beatrice.trivial_app.data.TriviaModel
 
 class TriviaActivity : AppCompatActivity() {
     private val triviaViewModel: TriviaViewModel by viewModels()
+    private lateinit var triviaTextView: TextView
+    private lateinit var buttonView: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        triviaTextView = findViewById(R.id.triviaTextView)
+        buttonView = findViewById(R.id.button)
         saveTrivia()
+        onButtonClicked()
+        observeTrivia()
     }
-    // TODO: Save the records if don't exist in the database
-    // TODO: When you click the button it reads from the database ans shows thta
+
 
     private fun saveTrivia() {
         triviaViewModel.saveTrivia(trivia, this)
+    }
+
+    private fun onButtonClicked(){
+        buttonView.setOnClickListener {
+            var triviaId = triviaViewModel.triviaId
+            if (triviaId < 10){
+                triviaId += 1
+            }else{
+                triviaId = 0
+                triviaTextView.text = "Hello World"
+            }
+            Log.d("TRIVIAID", "is $triviaId ")
+            triviaViewModel.triviaId = triviaId
+            triviaViewModel.getTrivia(this)
+        }
+    }
+
+    private fun observeTrivia(){
+        triviaViewModel.trivia.observe(this){ trivia ->
+            trivia?.let {
+                Log.d("TRIVIAID", "is ${it.triviaText}")
+                triviaTextView.text = it.triviaText
+            }
+        }
     }
 
     private val trivia = listOf(
@@ -52,7 +85,7 @@ class TriviaActivity : AppCompatActivity() {
         ),
         TriviaModel(
             8,
-            "Only two national flags have the color purple on them. Which ones are they"
+            "Only two national flags have the color purple on them. Which ones are they?"
         ),
         TriviaModel(
             9,

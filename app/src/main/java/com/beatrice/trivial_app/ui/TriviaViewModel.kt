@@ -7,20 +7,21 @@ import com.beatrice.trivial_app.repository.TriviaRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TriviaViewModel: ViewModel(){
+class TriviaViewModel : ViewModel() {
     private val repository = TriviaRepository()
+    var triviaId = 0
 
-    private val trivia = MutableLiveData<TriviaModel?>()
-    val mTrivia: LiveData<TriviaModel?> get() = trivia
+    private val _trivia = MutableLiveData<TriviaModel?>()
+    val trivia: LiveData<TriviaModel?> get() = _trivia
 
-    fun getTrivia(triviaId: Int, context: Context){
-        viewModelScope.launch {
+    fun getTrivia(context: Context) {
+        viewModelScope.launch(Dispatchers.IO) {
             val result = repository.getTrivia(triviaId, context)
-            trivia.postValue(result)
+            _trivia.postValue(result)
         }
     }
 
-    fun saveTrivia(trivia: List<TriviaModel>, context: Context){
+    fun saveTrivia(trivia: List<TriviaModel>, context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.saveTrivia(trivia, context)
         }
