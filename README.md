@@ -1,2 +1,2 @@
 # Trivia App
-A simple app to explain Android aarchitecture components; ViewModel, Livedata, Room
+A simple app to explain Android architecture components; ViewModel, Livedata, Room
