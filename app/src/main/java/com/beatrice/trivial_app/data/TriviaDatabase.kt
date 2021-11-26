@@ -1,12 +1,15 @@
 package com.beatrice.trivial_app.data
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [],
+    entities = [
+        TriviaModel::class
+    ],
     version = 1
 )
 abstract class TriviaDatabase : RoomDatabase() {
@@ -16,16 +19,18 @@ abstract class TriviaDatabase : RoomDatabase() {
         fun getInstance(context: Context): TriviaDatabase {
             var instance = INSTANCE
             if (instance == null) {
+                Log.d("MDATABASE", "getting here")
                 instance = Room.databaseBuilder(
                     context.applicationContext,
                     TriviaDatabase::class.java,
                     "app_database"
-                )
-                    .build()
+                ).build()
 
                 INSTANCE = instance
             }
-        return instance
+            return instance
         }
     }
+
+    abstract fun triviaDao(): TriviaDao
 }
