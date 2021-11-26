@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ArchitectureComponets">
         <activity
-            android:name=".MainActivity"
+            android:name="com.beatrice.trivial_app.ui.TriviaActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
